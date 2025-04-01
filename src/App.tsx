@@ -1,16 +1,21 @@
-import { fetchHuggingFace } from './api/huggingFaceApi';
 import './App.css';
 import Button from './components/Button';
 import Input from './components/Input';
+import useHuggingFace from './hooks/useHuggingFace';
 
 function App() {
-  fetchHuggingFace('test')
-    .then((response) => {
-      console.log(response);
-    })
-    .catch((error) => {
-      console.error('Error fetching from Hugging Face API:', error);
-    });
+  const [getHuggingFace, isLoading, error, result] = useHuggingFace();
+
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+    // const text = (event.target as HTMLFormElement).text.value;
+    try {
+      await getHuggingFace('text');
+      console.log(isLoading, error, result);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   return (
     <>
@@ -20,7 +25,7 @@ function App() {
       <main>
         <h2>Analyze your text</h2>
         <p>Enter text to analyze its sentiment.</p>
-        <form>
+        <form onSubmit={handleSubmit}>
           <Input />
           <Button />
         </form>

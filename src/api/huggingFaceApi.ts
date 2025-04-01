@@ -1,9 +1,9 @@
-import { huggingFaceResponse } from '../types/huggingFaceTypes';
+import { huggingFaceResults } from '../types/huggingFaceTypes';
 
 const HUGGING_FACE_URL =
   'https://api-inference.huggingface.co/models/distilbert-base-uncased-finetuned-sst-2-english';
 
-export const fetchHuggingFace = async (text: string): Promise<huggingFaceResponse> => {
+export const fetchHuggingFace = async (text: string): Promise<huggingFaceResults> => {
   try {
     const token = import.meta.env.VITE_HUGGING_FACE_TOKEN;
     if (!token) {
@@ -24,7 +24,7 @@ export const fetchHuggingFace = async (text: string): Promise<huggingFaceRespons
     }
 
     const data = await response.json();
-    return data;
+    return data[0];
   } catch (error) {
     console.error('Fetching data error:', error);
     throw error;

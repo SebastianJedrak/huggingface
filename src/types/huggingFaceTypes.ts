@@ -5,7 +5,4 @@ export interface huggingFaceResult {
   score: number;
 }
 
-export interface huggingFaceResponse {
-  data: huggingFaceResult[];
-  error?: string;
-}
+export type huggingFaceResults = huggingFaceResult[];
