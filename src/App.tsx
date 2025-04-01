@@ -1,8 +1,17 @@
+import { fetchHuggingFace } from './api/huggingFaceApi';
 import './App.css';
 import Button from './components/Button';
 import Input from './components/Input';
 
 function App() {
+  fetchHuggingFace('test')
+    .then((response) => {
+      console.log('Response from Hugging Face API:', response);
+    })
+    .catch((error) => {
+      console.error('Error fetching from Hugging Face API:', error);
+    });
+
   return (
     <>
       <header>

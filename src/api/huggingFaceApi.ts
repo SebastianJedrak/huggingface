@@ -2,7 +2,7 @@ const HUGGING_FACE_URL =
   'https://api-inference.huggingface.co/models/distilbert-base-uncased-finetuned-sst-2-english';
 
 const getHuggingFaceToken = (): string => {
-  const token = import.meta.env.HUGGING_FACE_TOKEN;
+  const token = import.meta.env.VITE_HUGGING_FACE_TOKEN;
   if (!token) {
     console.warn('API token is not defined in environment variables');
   }
