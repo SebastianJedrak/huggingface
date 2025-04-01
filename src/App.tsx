@@ -6,7 +6,7 @@ import Input from './components/Input';
 function App() {
   fetchHuggingFace('test')
     .then((response) => {
-      console.log('Response from Hugging Face API:', response);
+      console.log(response);
     })
     .catch((error) => {
       console.error('Error fetching from Hugging Face API:', error);
