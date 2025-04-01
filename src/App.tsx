@@ -26,7 +26,11 @@ function App() {
         <h2>Analyze your text</h2>
         <p>Enter text to analyze its sentiment.</p>
         <form onSubmit={handleSubmit}>
-          <Input />
+          <Input label="Sentiment" type="textarea" maxLength={500} autoFocus />
+
+          {error && <span>{error}</span>}
+          {isLoading && <span>Loading...</span>}
+
           <Button />
         </form>
       </main>
