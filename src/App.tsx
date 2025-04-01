@@ -50,7 +50,7 @@ function App() {
               </div>
             ))}
 
-          <Button />
+          <Button label="Submit" type="submit" isLoading={isLoading} />
         </form>
       </main>
 
