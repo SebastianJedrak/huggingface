@@ -23,7 +23,7 @@ export const useHuggingFace = (): UseHuggingFaceReturn => {
     const data = await huggingFaceApi.fetchHuggingFace(text, onError);
     setIsLoading(false);
 
-    if (data && !error) {
+    if (data) {
       return data;
     } else {
       return null;
