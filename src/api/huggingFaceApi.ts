@@ -12,8 +12,11 @@ export const fetchHuggingFace = async (
     if (!token) {
       throw new Error('Hugging Face API token is not defined');
     }
-    if (!text) {
+    if (!text.trim()) {
       throw new Error('Please provide a text to analyze');
+    }
+    if (text.trim().length > 500) {
+      throw new Error('Text is to long');
     }
 
     const response = await fetch(HUGGING_FACE_URL, {
