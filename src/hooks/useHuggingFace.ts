@@ -6,31 +6,31 @@ type UseHuggingFaceReturn = [
   (text: string) => Promise<huggingFaceResults | null>,
   boolean,
   string | null,
-  huggingFaceResults | null,
 ];
 
 export const useHuggingFace = (): UseHuggingFaceReturn => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [result, setResult] = useState<huggingFaceResults | null>(null);
+
+  const onError = (error: string) => {
+    setError(error);
+  };
 
   const getHuggingFace = async (text: string) => {
     setIsLoading(true);
     setError(null);
 
-    try {
-      const data = await huggingFaceApi.fetchHuggingFace(text);
-      setResult(data);
-      return result;
-    } catch (err) {
-      setError(err as string);
-      throw err;
-    } finally {
-      setIsLoading(false);
+    const data = await huggingFaceApi.fetchHuggingFace(text, onError);
+    setIsLoading(false);
+
+    if (data && !error) {
+      return data;
+    } else {
+      return null;
     }
   };
 
-  return [getHuggingFace, isLoading, error, result];
+  return [getHuggingFace, isLoading, error];
 };
 
 export default useHuggingFace;

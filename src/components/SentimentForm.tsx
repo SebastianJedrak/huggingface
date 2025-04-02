@@ -5,21 +5,17 @@ import useHuggingFace from '../hooks/useHuggingFace';
 import { huggingFaceResults } from '../types/huggingFaceTypes';
 
 interface SentimentFormProps {
-  onSubmit: (data: huggingFaceResults) => void;
+  onSubmit: (data: huggingFaceResults | null) => void;
 }
 
 const SentimentForm: React.FC<SentimentFormProps> = ({ onSubmit }) => {
-  const [getHuggingFace, isLoading, error, result] = useHuggingFace();
+  const [getHuggingFace, isLoading, error] = useHuggingFace();
   const [sentimentInput, setSentimentInput] = useState('');
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    try {
-      await getHuggingFace(sentimentInput);
-      onSubmit(result!);
-    } catch (err) {
-      console.error(err);
-    }
+    const result = await getHuggingFace(sentimentInput);
+    onSubmit(result);
   };
 
   const handleInputChange = (value: string) => {
