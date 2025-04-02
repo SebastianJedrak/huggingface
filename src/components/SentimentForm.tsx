@@ -2,8 +2,13 @@ import { useState } from 'react';
 import Button from './Button';
 import Input from './Input';
 import useHuggingFace from '../hooks/useHuggingFace';
+import { huggingFaceResults } from '../types/huggingFaceTypes';
 
-function SentimentForm() {
+interface SentimentFormProps {
+  onSubmit: (data: huggingFaceResults) => void;
+}
+
+const SentimentForm: React.FC<SentimentFormProps> = ({ onSubmit }) => {
   const [getHuggingFace, isLoading, error, result] = useHuggingFace();
   const [sentimentInput, setSentimentInput] = useState('');
 
@@ -11,6 +16,7 @@ function SentimentForm() {
     event.preventDefault();
     try {
       await getHuggingFace(sentimentInput);
+      onSubmit(result!);
     } catch (err) {
       console.error(err);
     }
@@ -33,17 +39,10 @@ function SentimentForm() {
 
       {error && <span>{error}</span>}
       {isLoading && <span>Loading...</span>}
-      {result &&
-        result.map((item, index) => (
-          <div key={index}>
-            <p>{item.label}</p>
-            <p>{item.score}</p>
-          </div>
-        ))}
 
       <Button label="Submit" type="submit" isLoading={isLoading} />
     </form>
   );
-}
+};
 
 export default SentimentForm;
