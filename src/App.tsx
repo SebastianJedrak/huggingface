@@ -9,9 +9,12 @@ function App() {
   const [sentimentModalOpen, setSentimentModalOpen] = useState(false);
 
   const handleSentimentFormSubmit = (data: huggingFaceResults | null) => {
+    setSentimentFormResult(data);
+
     if (data) {
-      setSentimentFormResult(data);
       setSentimentModalOpen(true);
+    } else {
+      setSentimentModalOpen(false);
     }
   };
 
