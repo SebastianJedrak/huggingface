@@ -27,10 +27,11 @@ const Input: React.FC<InputProps> = ({
 
   return (
     <>
-      <label>{label}</label>
+      <label htmlFor={label}>{label}</label>
 
       {type !== 'textarea' && (
         <input
+          id={label}
           type={type}
           value={value}
           onChange={handleChange}
@@ -41,6 +42,7 @@ const Input: React.FC<InputProps> = ({
       )}
       {type === 'textarea' && (
         <textarea
+          id={label}
           value={value}
           onChange={handleChange}
           placeholder={placeholder}
