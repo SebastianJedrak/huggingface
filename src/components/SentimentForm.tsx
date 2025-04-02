@@ -31,6 +31,7 @@ const SentimentForm: React.FC<SentimentFormProps> = ({ onSubmit }) => {
         type="textarea"
         maxLength={500}
         autoFocus
+        required
       />
 
       {error && <span>{error}</span>}

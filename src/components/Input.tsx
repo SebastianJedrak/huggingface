@@ -8,6 +8,7 @@ interface InputProps {
   placeholder?: string;
   maxLength?: number;
   autoFocus?: boolean;
+  required?: boolean;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -18,6 +19,7 @@ const Input: React.FC<InputProps> = ({
   placeholder = '',
   maxLength,
   autoFocus = false,
+  required = false,
 }) => {
   const handleChange = (
     event: React.ChangeEvent<HTMLTextAreaElement> | React.ChangeEvent<HTMLInputElement>
@@ -38,6 +40,7 @@ const Input: React.FC<InputProps> = ({
           placeholder={placeholder}
           maxLength={maxLength}
           autoFocus={autoFocus}
+          required={required}
         />
       )}
       {type === 'textarea' && (
@@ -48,6 +51,7 @@ const Input: React.FC<InputProps> = ({
           placeholder={placeholder}
           maxLength={maxLength}
           autoFocus={autoFocus}
+          required={required}
         />
       )}
     </>
