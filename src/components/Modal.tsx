@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import Button from './Button';
 
 interface ModalProps {
@@ -9,14 +9,20 @@ interface ModalProps {
 }
 
 const Modal: React.FC<ModalProps> = ({ title, isOpen, onClose, children }) => {
-  if (!isOpen) return null;
+  const dialogRef = useRef<HTMLDialogElement>(null);
+
+  if (isOpen) {
+    dialogRef.current?.showModal();
+  } else {
+    dialogRef.current?.close();
+  }
 
   return (
-    <div className="modal__overlay" onClick={onClose}>
+    <dialog ref={dialogRef} className="modal__overlay" onClick={onClose}>
       <div className="modal__header">{title}</div>
       <div className="modal__content">{children}</div>
       <Button label="OK" onClick={onClose} />
-    </div>
+    </dialog>
   );
 };
 
