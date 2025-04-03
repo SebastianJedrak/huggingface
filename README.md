@@ -1,54 +1,127 @@
-# React + TypeScript + Vite
+# Sentiment Analysis Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This application allows users to analyze the sentiment of text using the Hugging Face Inference API.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Text input with validation (empty check and 500 character limit)
+- Sentiment analysis using Hugging Face API
+- Display of results in a modal with appropriate icons
+- Loading, error, and success states
+- Responsive design
 
-## Expanding the ESLint configuration
+## Technologies Used
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **TypeScript** - For type safety and better developer experience
+- **React** - UI library for building the interface
+- **SCSS** - For styling components
+- **Vite** - For fast development and building
+- **Vitest & Testing Library** - For unit testing
+- **ESLint & Prettier** - For code quality and formatting
+- **Husky** - For pre-commit hooks
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Project Setup
+
+### Prerequisites
+
+- Node.js (v14 or higher)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/SebastianJedrak/huggingface.git
+   cd huggingface
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   # or
+   yarn
+   ```
+
+3. Create a `.env` file in the root directory with your Hugging Face API token:
+   ```
+   VITE_HUGGING_FACE_TOKEN=your_api_token_here
+   ```
+
+### Development
+
+To start the development server:
+
+```bash
+npm run dev
+# or
+yarn dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+The application will be available at `http://localhost:5173`.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Building for Production
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+To build the application for production:
+
+```bash
+npm run build
+# or
+yarn build
 ```
+
+The built files will be in the `dist` directory.
+
+### Running Tests
+
+To run the tests:
+
+```bash
+npm run test
+# or
+yarn test
+```
+
+## Challenges and Solutions
+
+### State Management
+
+**Challenge**: Managing the different states of the application (loading, error, success) in a clean way.
+
+**Solution**: Utilized React's useState hook and created a custom useHuggingFace hook and huggingFaceApi to encapsulate the API call logic and state management.
+
+### Code Quality
+
+**Challenge**: Maintaining high code quality standards across the project.
+
+**Solution**: Implemented ESLint, Prettier, and Husky to enforce code style before commits.
+
+### Undefined Interface Language
+**Challenge**: The project requirements did not specify the interface language. The presence of a button labeled "Analizuj" suggested Polish, while the API returned results in English.
+
+**Solution**: Communicated with the client to clarify their expectations and ensure consistency in language usage across the interface and API responses.
+
+### API Non-availability
+**Challenge**: The API occasionally returned a 500 status error, which was beyond my control.
+
+**Solution**: Implemented a UI component to handle errors gracefully, displaying a "Failed to fetch" message when such an issue occurs.
+
+### Unspecified "NEUTRAL" Status
+**Challenge**: The project requirements mentioned a "NEUTRAL" status, but the API did not return such a value.
+
+**Solution**: Defined a threshold (NEUTRAL_THRESHOLD = 0.35), considering a result neutral if the absolute difference between the positive and negative scores was below this value.
+
+### Unit Testing in TypeScript
+**Challenge**: Writing unit tests in TypeScript presented challenges, particularly with type errors in certain cases.
+
+**Solution**: Focused testing on validation and error handling in huggingFaceApi.test.ts. Used @ts-expect-error to temporarily suppress TypeScript errors where necessary. While test coverage could be improved, individual component testing was not prioritized.
+
+### Global Styles in React
+**Challenge**: Styles in React are global, which can lead to conflicts and unintended overrides.
+
+**Solution**: Used SCSS to minimize the risk of style conflicts. Created a _variables.scss file to manage the application's design consistently across components.
+
+## Future Improvements
+
+- Add GraphQL support for API communication
+- Add more comprehensive test coverage
+- Add config file to avoid "magic numbers"
