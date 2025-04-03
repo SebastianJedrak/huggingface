@@ -12,5 +12,9 @@
     background-color: $color-primary-light;
     border: 2px solid $color-primary;
     border-radius: $border-radius;
+
+    &::backdrop {
+      background-color: $backdrop-color;
+    }
   }
 }

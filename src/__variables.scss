@@ -6,3 +6,15 @@ $color-primary-light: #faf9f5;
 $color-error: #e74c3c;
 
 $border-radius: 5px;
+$backdrop-color: rgba(0, 0, 0, 0.5);
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+$animation-spin: spin 1s infinite linear;

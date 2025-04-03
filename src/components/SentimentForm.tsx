@@ -53,7 +53,6 @@ const SentimentForm: React.FC = () => {
 
       {error && <p className="error">{error}</p>}
       {isLoading && <LoadingIndicator />}
-
       <Modal
         title="Sentiment Analysis"
         isOpen={sentimentModalOpen}

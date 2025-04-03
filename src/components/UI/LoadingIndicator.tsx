@@ -1,9 +1,10 @@
 import React from 'react';
+import './LoadingIndicator.scss';
 
 export const LoadingIndicator: React.FC = () => {
   return (
-    <div>
-      <div className="loading-indicator__spinner">Loading...</div>
+    <div className="ui-loading-container">
+      <div className="loading-indicator"></div>
     </div>
   );
 };
