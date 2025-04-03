@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import Button from './Button';
+import './Modal.scss';
 
 interface ModalProps {
   title: string;
@@ -18,8 +19,8 @@ const Modal: React.FC<ModalProps> = ({ title, isOpen, onClose, children }) => {
   }
 
   return (
-    <dialog ref={dialogRef} className="modal__overlay" onClick={onClose}>
-      <div className="modal__header">{title}</div>
+    <dialog ref={dialogRef} className="ui-modal" onClick={onClose}>
+      <h3>{title}</h3>
       <div className="modal__content">{children}</div>
       <Button label="OK" onClick={onClose} />
     </dialog>

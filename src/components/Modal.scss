@@ -1,0 +1,15 @@
+@import '../__variables.scss';
+
+.ui-modal {
+  &:open {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    background-color: $color-primary-light;
+    border: 2px solid $color-primary;
+    border-radius: $border-radius;
+  }
+}
