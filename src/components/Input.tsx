@@ -1,4 +1,5 @@
 import React, { HTMLInputTypeAttribute } from 'react';
+import './Input.scss';
 
 interface InputProps {
   label: string;
@@ -28,7 +29,7 @@ const Input: React.FC<InputProps> = ({
   };
 
   return (
-    <>
+    <div id="ui-input">
       <label htmlFor={label}>{label}</label>
 
       {type !== 'textarea' && (
@@ -54,7 +55,7 @@ const Input: React.FC<InputProps> = ({
           required={required}
         />
       )}
-    </>
+    </div>
   );
 };
 
