@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import SentimentForm from './components/SentimentForm';
 
 function App() {
