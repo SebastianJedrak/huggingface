@@ -48,7 +48,7 @@ const SentimentForm: React.FC = () => {
         {error && <span>{error}</span>}
         {isLoading && <span>Loading...</span>}
 
-        <Button label="Submit" type="submit" isLoading={isLoading} />
+        <Button label="Analyze" type="submit" isLoading={isLoading} />
       </form>
 
       <Modal
