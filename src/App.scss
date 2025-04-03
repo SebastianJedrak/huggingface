@@ -1,3 +1,5 @@
+@import './__variables.scss';
+
 #root {
   margin: 0;
   min-width: 320px;
@@ -13,5 +15,21 @@
     gap: 20px;
     align-items: center;
     margin-bottom: 150px;
+  }
+
+  header,
+  footer {
+    padding: 10px 0;
+    color: $color-primary;
+    width: 100%;
+    text-align: center;
+  }
+
+  header {
+    border-bottom: 1px solid $color-gray-light;
+  }
+
+  footer {
+    border-top: 1px solid $color-gray-light;
   }
 }
