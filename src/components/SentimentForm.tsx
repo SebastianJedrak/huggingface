@@ -5,6 +5,7 @@ import useHuggingFace from '../hooks/useHuggingFace';
 import { huggingFaceResultLabel } from '../types/huggingFaceTypes';
 import Modal from './Modal';
 import SentimentResult from './SentimentResult';
+import LoadingIndicator from './LoadingIndicator';
 
 const SentimentForm: React.FC = () => {
   const [result, setResult] = useState<huggingFaceResultLabel | null>(null);
@@ -47,7 +48,7 @@ const SentimentForm: React.FC = () => {
         />
 
         {error && <span>{error}</span>}
-        {isLoading && <span>Loading...</span>}
+        {isLoading && <LoadingIndicator />}
 
         <Button label="Analyze" type="submit" isLoading={isLoading} />
       </form>
