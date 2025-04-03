@@ -1,9 +1,11 @@
 import { useState } from 'react';
-import { huggingFaceResults } from '../types/huggingFaceTypes';
+import { huggingFaceResultLabel } from '../types/huggingFaceTypes';
 import huggingFaceApi from '../api/huggingFaceApi';
 
+const NEUTRAL_THRESHOLD = 0.35; //absolute value of positive - negative score
+
 type UseHuggingFaceReturn = [
-  (text: string) => Promise<huggingFaceResults | null>,
+  (text: string) => Promise<huggingFaceResultLabel | null>,
   boolean,
   string | null,
 ];
@@ -24,7 +26,19 @@ export const useHuggingFace = (): UseHuggingFaceReturn => {
     setIsLoading(false);
 
     if (data) {
-      return data;
+      let sentiment: huggingFaceResultLabel;
+      const positiveScore = data.find((el) => el.label === 'POSITIVE')!.score;
+      const negativeScore = data.find((el) => el.label === 'NEGATIVE')!.score;
+
+      if (Math.abs(positiveScore - negativeScore) < NEUTRAL_THRESHOLD) {
+        sentiment = 'NEUTRAL';
+      } else if (positiveScore > negativeScore) {
+        sentiment = 'POSITIVE';
+      } else {
+        sentiment = 'NEGATIVE';
+      }
+
+      return sentiment;
     } else {
       return null;
     }

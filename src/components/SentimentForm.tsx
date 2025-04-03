@@ -2,11 +2,11 @@ import { useState } from 'react';
 import Button from './Button';
 import Input from './Input';
 import useHuggingFace from '../hooks/useHuggingFace';
-import { huggingFaceResults } from '../types/huggingFaceTypes';
+import { huggingFaceResultLabel } from '../types/huggingFaceTypes';
 import Modal from './Modal';
 
 const SentimentForm: React.FC = () => {
-  const [result, setResult] = useState<huggingFaceResults | null>(null);
+  const [result, setResult] = useState<huggingFaceResultLabel | null>(null);
   const [sentimentModalOpen, setSentimentModalOpen] = useState(false);
   const [getHuggingFace, isLoading, error] = useHuggingFace();
   const [sentimentInput, setSentimentInput] = useState('');
@@ -56,13 +56,7 @@ const SentimentForm: React.FC = () => {
         isOpen={sentimentModalOpen}
         onClose={handleSentimentModalClose}
       >
-        {result &&
-          result.map((item, index) => (
-            <div key={index}>
-              <p>{item.label}</p>
-              <p>{item.score}</p>
-            </div>
-          ))}
+        {result && result}
       </Modal>
     </>
   );
