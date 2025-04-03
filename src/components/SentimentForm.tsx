@@ -4,6 +4,7 @@ import Input from './Input';
 import useHuggingFace from '../hooks/useHuggingFace';
 import { huggingFaceResultLabel } from '../types/huggingFaceTypes';
 import Modal from './Modal';
+import SentimentResult from './SentimentResult';
 
 const SentimentForm: React.FC = () => {
   const [result, setResult] = useState<huggingFaceResultLabel | null>(null);
@@ -56,7 +57,7 @@ const SentimentForm: React.FC = () => {
         isOpen={sentimentModalOpen}
         onClose={handleSentimentModalClose}
       >
-        {result && result}
+        {result && <SentimentResult sentiment={result} />}
       </Modal>
     </>
   );
