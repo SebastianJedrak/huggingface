@@ -1,0 +1,13 @@
+.ui-input {
+    display: flex;
+    flex-direction: column;
+
+    label {
+        font-weight: 500;
+    }
+
+    textarea {
+        height: 200px;
+        resize: none;
+    }
+}
