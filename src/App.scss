@@ -1,8 +1,6 @@
 @import './__variables.scss';
 
 #root {
-  margin: 0;
-  min-width: 320px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -23,6 +21,7 @@
     color: $color-primary;
     width: 100%;
     text-align: center;
+    word-wrap: break-word;
   }
 
   header {

@@ -2,6 +2,7 @@
 
 .ui-modal {
   &:open {
+    text-align: center;
     margin: auto;
     display: flex;
     flex-direction: column;
