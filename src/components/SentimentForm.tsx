@@ -36,7 +36,7 @@ const SentimentForm: React.FC = () => {
   };
 
   return (
-    <div id="sentiment-form">
+    <div className="sentiment-form">
       <form onSubmit={handleSubmit}>
         <Input
           label="Sentiment"

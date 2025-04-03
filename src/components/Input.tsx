@@ -29,7 +29,7 @@ const Input: React.FC<InputProps> = ({
   };
 
   return (
-    <div id="ui-input">
+    <div className="ui-input">
       <label htmlFor={label}>{label}</label>
 
       {type !== 'textarea' && (

@@ -1,20 +1,17 @@
+@import './__variables.scss';
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
-  color: var(--color-black);
-  background-color: var(--color-primary-light);
+  color: $color-black;
+  background-color: $color-primary-light;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  --color-black: #000;
-  --color-white: #fff;
-  --color-primary: #c96442;
-  --color-primary-light: #faf9f5;
 }
 
 * {
@@ -23,17 +20,17 @@
 }
 
 h1 {
-  color: var(--color-primary);
+  color: $color-primary;
   font-size: 3.2em;
 }
 
 h2 {
-  color: var(--color-primary);
+  color: $color-primary;
   font-size: 2.2em;
 }
 
 header,
 footer {
   margin: 20px 0;
-  color: var(--color-primary);
+  color: $color-primary;
 }
