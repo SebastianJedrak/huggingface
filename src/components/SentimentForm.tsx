@@ -6,6 +6,7 @@ import { huggingFaceResultLabel } from '../types/huggingFaceTypes';
 import Modal from './Modal';
 import SentimentResult from './SentimentResult';
 import LoadingIndicator from './LoadingIndicator';
+import './SentimentForm.scss';
 
 const SentimentForm: React.FC = () => {
   const [result, setResult] = useState<huggingFaceResultLabel | null>(null);
@@ -35,7 +36,7 @@ const SentimentForm: React.FC = () => {
   };
 
   return (
-    <>
+    <div id="sentiment-form">
       <form onSubmit={handleSubmit}>
         <Input
           label="Sentiment"
@@ -60,7 +61,7 @@ const SentimentForm: React.FC = () => {
       >
         {result && <SentimentResult sentiment={result} />}
       </Modal>
-    </>
+    </div>
   );
 };
 

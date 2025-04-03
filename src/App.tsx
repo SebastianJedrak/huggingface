@@ -10,7 +10,7 @@ function App() {
 
       <main>
         <h2>Analyze your text</h2>
-        <p>Enter text to analyze its sentiment.</p>
+        <p>Enter text to analyze its sentiment</p>
         <SentimentForm />
       </main>
 
