@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import Button from './Button';
-import Input from './Input';
+import Button from './UI/Button';
+import Input from './UI/Input';
 import useHuggingFace from '../hooks/useHuggingFace';
 import { huggingFaceResultLabel } from '../types/huggingFaceTypes';
-import Modal from './Modal';
+import Modal from './UI/Modal';
 import SentimentResult from './SentimentResult';
-import LoadingIndicator from './LoadingIndicator';
+import LoadingIndicator from './UI/LoadingIndicator';
 import './SentimentForm.scss';
 
 const SentimentForm: React.FC = () => {
